@@ -33,9 +33,11 @@ public class ClaimService {
     }
 
     // Get all claims for a customer
-    public List<Claim> getClaimsByCustomerId(Long customerId) {
-        return repo.findByCustomerCustomerId(customerId);
-    }
+    // Get all claims for a customer
+public List<Claim> getClaimsByCustomerId(Long customerId) {
+    return repo.findByCustomer_CustomerId(customerId);
+}
+
 
     // Update claim status
     public Claim updateClaimStatus(Long id, String status) {

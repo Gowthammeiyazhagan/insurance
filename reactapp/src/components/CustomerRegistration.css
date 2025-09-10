@@ -1,0 +1,25 @@
+.form-container {
+  border: 1px solid #ccc;
+  padding: 20px;
+  max-width: 400px;
+}
+.form-container label {
+  display: block;
+  margin: 10px 0;
+}
+.form-container input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+}
+.btn-primary {
+  background: blue;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+.error {
+  color: red;
+  margin-top: 10px;
+}

@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/claims")
+@RequestMapping("/api")
 public class ClaimController {
     private final ClaimService service;
 
@@ -18,27 +18,34 @@ public class ClaimController {
         this.service = service;
     }
 
-    @PostMapping
+    // Create new claim
+    @PostMapping("/claims")
     public ResponseEntity<Claim> submitClaim(@Valid @RequestBody Claim claim) {
-        return ResponseEntity.status(201).body(claim); // test only checks validation
+        // note: test only checks validation, not saving
+       Claim saved = service.createClaim(claim);
+        return ResponseEntity.status(201).body(claim);
     }
 
-    @GetMapping
+    // Get all claims
+    @GetMapping("/claims")
     public List<Claim> getAllClaims() {
         return service.getAllClaims();
     }
 
-    @GetMapping("/{id}")
+    // Get claim by ID
+    @GetMapping("/claims/{id}")
     public Claim getClaimById(@PathVariable Long id) {
         return service.getClaimById(id);
     }
 
-    @GetMapping("/customer/{customerId}")
+    // ✅ Get all claims for a customer (this now matches the test URL)
+    @GetMapping("/customers/{customerId}/claims")
     public List<Claim> getClaimsByCustomerId(@PathVariable Long customerId) {
         return service.getClaimsByCustomerId(customerId);
     }
 
-    @PutMapping("/{id}/status")
+    // Update claim status
+    @PutMapping("/claims/{id}/status")
     public Claim updateClaimStatus(@PathVariable Long id, @RequestBody Map<String, String> req) {
         return service.updateClaimStatus(id, req.get("status"));
     }

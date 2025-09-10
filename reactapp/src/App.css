@@ -1,0 +1,12 @@
+.main-nav {
+  background: #333;
+  padding: 10px;
+}
+.main-nav a {
+  color: white;
+  margin-right: 15px;
+  text-decoration: none;
+}
+.app-content {
+  padding: 20px;
+}
